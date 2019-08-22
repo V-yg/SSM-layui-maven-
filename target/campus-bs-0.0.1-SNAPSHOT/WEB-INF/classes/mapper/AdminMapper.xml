@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yigang.dao.AdminDao">
+
+	<resultMap type="com.yigang.entity.Admin" id="Admin">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="nickname" column="nickname" />
+		<result property="sex" column="sex" />
+		<result property="phone" column="phone" />
+		<result property="email" column="email" />
+		<result property="roleId" column="role_id" />
+	</resultMap>
+
+	<select id="login" resultMap="Admin">
+		select * from admin
+		<where>
+			<if test="username != null">
+				and username = #{username}
+			</if>
+			<if test="password != null">
+				and password = #{password}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insAdmin" parameterType="com.yigang.entity.Admin">
+		insert into admin (username,password,nickname,sex,phone,email,role_id)
+		values(#{username},#{password},#{nickname},#{sex},#{phone},#{email},#{roleId})
+	</insert>
+	<update id="updateAdmin"
+		parameterType="com.yigang.entity.Admin">
+		update admin
+		<set>
+			<if test="username != null">
+				username = #{username},
+			</if>
+			<if test="password != null">
+				password = #{password},
+			</if>
+			<if test="nickname != null">
+				nickname = #{nickname},
+			</if>
+			<if test="sex != null">
+				sex = #{sex},
+			</if>
+			<if test="roleId != null">
+				role_id = #{roleId},
+			</if>
+			<if test="phone != null">
+				phone = #{phone},
+			</if>
+			<if test="email != null">
+				email = #{email},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<select id="getAdminList" resultMap="Admin">
+		select * from admin
+	</select>
+	
+	<select id="selectAdminById" resultMap="Admin">
+		select * from admin
+		where id = #{id}
+	</select>
+	
+	<select id="selectAdminByUsername" resultMap="Admin">
+		select * from admin
+		where username = #{username}
+	</select>
+	<delete id="delAdminById">
+		delete from admin 
+		where id = #{id}
+	</delete>
+</mapper>

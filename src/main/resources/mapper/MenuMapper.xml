@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yigang.dao.MenuDao">
+
+	<resultMap type="com.yigang.entity.Menu" id="Menu">
+		<id column="id" property="menuId" />
+		<result column="name" property="name" />
+		<result column="icon" property="icon" />
+		<result column="href" property="href" />
+		<result column="perms" property="perms" />
+		<result column="spread" property="spread" />
+		<result column="parent_id" property="parentId" />
+		<result column="sorting" property="sorting" />
+	</resultMap>
+
+	<select id="getMenuById" resultMap="Menu">
+		select * from menu
+		where id =
+		#{menuId}
+	</select>
+
+	<select id="getMenuByName" resultMap="Menu">
+		select * from menu
+		where
+		name = #{name}
+	</select>
+
+	<select id="getMenuByParentId" resultMap="Menu">
+		select * from menu
+		where parent_id = #{parentId}
+	</select>
+
+	<select id="getAllMenus" resultMap="Menu">
+		select * from menu order by
+		sorting desc
+	</select>
+
+	<select id="checkNameSameLevel" resultMap="Menu"
+		parameterType="com.yigang.entity.Menu">
+		select * from menu
+		<where>
+			parent_id = #{parentId} and name = #{name}
+		</where>
+	</select>
+
+	<update id="updataMenuByKey"
+		parameterType="com.yigang.entity.Menu">
+		update menu
+		<set>
+			<if test="sorting != null">
+				sorting = #{sorting}
+			</if>
+		</set>
+		<where>
+			id = #{menuId}
+		</where>
+	</update>
+
+	<update id="updataMenu" parameterType="com.yigang.entity.Menu">
+		update menu
+		set name = #{name},icon=#{icon},href=#{href},perms=#{perms},spread=#{spread},parent_id=#{parentId},sorting=#{sorting}
+		<where>
+			id = #{menuId}
+		</where>
+	</update>
+
+	<insert id="insMenu" parameterType="com.yigang.entity.Menu">
+		insert into
+		menu(name,icon,href,perms,spread,parent_id,sorting)
+		values(#{name},#{icon},#{href},#{perms},#{spread},#{parentId},#{sorting})
+	</insert>
+
+	<delete id="delMenuById">
+		delete from menu
+		where id = #{menuId}
+	</delete>
+</mapper>

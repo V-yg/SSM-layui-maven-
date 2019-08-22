@@ -1,0 +1,10 @@
+.list_search{ padding:10px 10px; }
+.list_search .layui-inline{ margin:5px 5px 5px 0; }
+.news_list .layui-btn,.news_list .layui-btn+.layui-btn{ margin:2px 5px; }
+.news_list .layui-form-switch{ margin-top:0; }
+
+/* 数据表格复选框正常显示 */
+.layui-table-cell .layui-form-checkbox[lay-skin="primary"]{
+     top: 50%;
+     transform: translateY(-50%);
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yigang.dao.UserDao">
+
+	<resultMap type="com.yigang.entity.UserLog" id="UserLog">
+		<id property="id" column="id" />
+		<result property="userUsername" column="user_username" />
+		<result property="loginIp" column="login_ip" />
+		<result property="loginTime" column="login_time" />
+	</resultMap>
+	
+	<select id="selectUserLogList" resultMap="UserLog">
+		select * from user_log
+	</select>
+	
+	<update id="insertUserLog"
+		parameterType="com.yigang.entity.UserLog">
+		insert into user_log
+		(user_username,login_ip,login_time)
+		values(#{userUsername},#{loginIp},#{loginTime})
+	</update>
+	
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yigang.dao.RoleDao">
+
+	<resultMap type="com.yigang.entity.Role" id="Role">
+		<id column="role_id" property="roleId"  />
+    <result column="role_name" property="roleName" />
+    <result column="role_remark" property="roleRemark"/>
+	</resultMap>
+	
+	<select id="selRoles" resultMap="Role">
+		select * from roles
+	</select>
+	
+	<select id="getRoleById" resultMap="Role">
+		select * from roles
+		where role_id = #{id}
+	</select>
+	
+	<select id="selectRoleByRoleName" resultMap="Role">
+		select * from roles
+		where role_name = #{RoleName}
+	</select>
+	
+	<insert id="insertRole" parameterType="com.yigang.entity.Role">
+		insert into roles (role_name,role_remark)
+    	values (#{roleName}, #{roleRemark})
+	</insert>
+	
+	<update id="updateByKey"
+		parameterType="com.yigang.entity.Role">
+		update roles
+		<set>
+			<if test="roleName != null">
+				role_name = #{roleName},
+			</if>
+			<if test="roleRemark != null">
+				role_remark = #{roleRemark},
+			</if>
+		</set>
+		where role_id = #{roleId}
+	</update>
+	
+	<delete id="delRole">
+		delete from roles 
+		where role_id = #{roleId}
+	</delete>
+</mapper>

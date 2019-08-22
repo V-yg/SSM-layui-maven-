@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yigang.dao.CourseDao">
+
+	<resultMap type="com.yigang.entity.Course" id="Course">
+		<id property="id" column="id" />
+		<result property="courseName" column="course_name" />
+		<result property="teacherName" column="teacher_name" />
+		<result property="place" column="place" />
+		<result property="weekBegin" column="week_begin" />
+		<result property="weekEnd" column="week_begin" />
+		<result property="weekType" column="week_begin" />
+		<result property="lesson" column="lesson" />
+		<result property="day" column="day" />
+		<result property="placeBuilder" column="place_builder" />
+	</resultMap>
+
+	<select id="selectCourseById" resultMap="Course">
+		select * from course
+		where id = #{id}
+	</select>
+	
+	<select id="selectAllCourseList" resultMap="Course">
+		select * from course
+	</select>
+	
+</mapper>
