@@ -1,6 +1,6 @@
 # SSM-layui-maven-
 SSM+layui后台管理maven版
- ![image] https://github.com/V-yg/SSM-layui-maven-/blob/master/0433c7bc68d688f31e54f99bedf78e5.png
+ ![image] (https://github.com/V-yg/SSM-layui-maven-/blob/master/0433c7bc68d688f31e54f99bedf78e5.png)
  ![image] https://github.com/V-yg/SSM-layui-maven-/blob/master/2414af2f87c9dc861c81d37f4647521.png
  ![image] https://github.com/V-yg/SSM-layui-maven-/blob/master/3aafa4b863c2e3585bbeebbc6d109d3.png
  ![image] https://github.com/V-yg/SSM-layui-maven-/blob/master/577eca9ddfae88fa0e201bd260e5a32.png
