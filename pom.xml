@@ -23,7 +23,7 @@
 		<jsp-api.version>2.0</jsp-api.version>
 		<commons-lang3.version>3.3.2</commons-lang3.version>
 		<commons-io.version>1.3.2</commons-io.version>
-		<commons-net.version>3.3</commons-net.version>
+		<commons-net.version>3.9.0</commons-net.version>
 		<commons-fileupload.version>1.4</commons-fileupload.version>
 
 	</properties>
